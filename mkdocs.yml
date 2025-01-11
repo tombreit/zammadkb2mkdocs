@@ -1,0 +1,21 @@
+site_name: zammd-kb-export
+docs_dir: dist/docs
+plugins:
+  - search
+  - tags:
+      tags: true
+      tags_file: tags.md
+  - i18n:
+      docs_structure: suffix
+      languages:
+        - locale: en
+          name: English
+          build: true
+        - locale: de
+          name: Deutsch
+          build: true
+          default: true
+theme:
+  name: material
+  features:
+    - navigation.tabs

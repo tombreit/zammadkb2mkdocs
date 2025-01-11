@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "zammadkb2mkdocs"
+version = "0.0.1"
+description = "Exports a Zammad Knowledge Base to MkDocs"
+authors = [{name = "Thomas Breitner"}]
+dependencies = [
+    "markdownify",
+    "python-frontmatter",
+    # mkdocs only for previewing the result
+    "mkdocs",
+    "mkdocs-material",
+    "mkdocs-static-i18n",
+]
+
+[project.scripts]
+zammadkb2mkdocs = "zammadkb2mkdocs.cli:main"
