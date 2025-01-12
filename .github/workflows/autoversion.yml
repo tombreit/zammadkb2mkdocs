@@ -1,0 +1,36 @@
+name: Auto Tag Version
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  auto-tag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get latest tag and increment
+        id: tag
+        run: |
+          latest_tag=$(git describe --tags $(git rev-list --tags --max-count=1) 2>/dev/null || echo "v0.0.0")
+          version=${latest_tag#v}
+          major=$(echo $version | cut -d. -f1)
+          minor=$(echo $version | cut -d. -f2)
+          patch=$(echo $version | cut -d. -f3)
+          new_patch=$((patch + 1))
+          new_tag="v$major.$minor.$new_patch"
+          echo "new_tag=$new_tag" >> $GITHUB_OUTPUT
+
+      - name: Create and push tag
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git tag -a ${{ steps.tag.outputs.new_tag }} -m "Auto-incremented version to ${{ steps.tag.outputs.new_tag }}"
+          git push origin ${{ steps.tag.outputs.new_tag }}
