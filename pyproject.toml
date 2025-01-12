@@ -3,14 +3,16 @@
 # SPDX-License-Identifier: EUPL-1.2
 
 [build-system]
-requires = ["setuptools>=61.0"]
+requires = ["setuptools>=61.0", "setuptools_scm[toml]>=8.0"]
 build-backend = "setuptools.build_meta"
+
+[tool.setuptools_scm]
 
 [project]
 name = "zammadkb2mkdocs"
-version = "0.0.1"
+dynamic = ["version"]
 description = "Exports a Zammad Knowledge Base to MkDocs"
-authors = [  {name = "Thomas Breitner", email = "mail@thms.de"},]
+authors = [{name = "Thomas Breitner", email = "mail@thms.de"}]
 license = {file = "EUPL-1.2"}
 readme = "README.md"
 keywords = ["zammad", "mkdocs", "knowledge base"]
