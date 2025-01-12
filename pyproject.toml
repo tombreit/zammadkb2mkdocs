@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: Thomas Breitner
+#
+# SPDX-License-Identifier: EUPL-1.2
+
 [build-system]
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
@@ -6,7 +10,11 @@ build-backend = "setuptools.build_meta"
 name = "zammadkb2mkdocs"
 version = "0.0.1"
 description = "Exports a Zammad Knowledge Base to MkDocs"
-authors = [{name = "Thomas Breitner"}]
+authors = [  {name = "Thomas Breitner", email = "mail@thms.de"},]
+license = {file = "EUPL-1.2"}
+readme = "README.md"
+keywords = ["zammad", "mkdocs", "knowledge base"]
+requires-python = ">=3.9"
 dependencies = [
     "markdownify",
     "python-frontmatter",
@@ -15,6 +23,10 @@ dependencies = [
     "mkdocs-material",
     "mkdocs-static-i18n",
 ]
+
+[project.urls]
+Repository = "https://github.com/tombreit/zammadkb2mkdocs"
+Issues = "https://github.com/tombreit/zammadkb2mkdocs/issues"
 
 [project.scripts]
 zammadkb2mkdocs = "zammadkb2mkdocs.cli:main"

@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 
+# SPDX-FileCopyrightText: Thomas Breitner
+#
+# SPDX-License-Identifier: EUPL-1.2
+
 import json
 import logging
 from pathlib import Path

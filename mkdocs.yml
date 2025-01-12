@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: Thomas Breitner
+#
+# SPDX-License-Identifier: EUPL-1.2
+
 site_name: zammd-kb-export
 docs_dir: dist/docs
 plugins:
