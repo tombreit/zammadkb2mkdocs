@@ -151,6 +151,6 @@ def convert(config: Config) -> None:
 
     convert_to_mkdocs(config.json_imgfixed_path, config.docs_kb_dir)
     add_tags_page(config.docs_dir)
-    copy_images(config.img_dir, config.docs_dir)
+    copy_images(config.img_dir, config.docs_kb_dir)
 
     return convert_result
