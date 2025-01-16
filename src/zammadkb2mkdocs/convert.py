@@ -140,8 +140,8 @@ def copy_images(images_dir: str, output_dir: Path) -> None:
         return
 
     logger.info(f"Copying images from {images_dir} to {output_dir}...")
-    images_output_dir = output_dir / "images"
-    shutil.copytree(images_dir, images_output_dir, dirs_exist_ok=True)
+    dest_dir = output_dir / images_dir.name
+    shutil.copytree(images_dir, dest_dir, dirs_exist_ok=True)
 
 
 def convert(config: Config) -> None:
