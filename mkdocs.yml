@@ -4,6 +4,7 @@
 
 site_name: zammd-kb-export
 docs_dir: dist/docs
+site_dir: dist/site
 plugins:
   - search
   - tags:
