@@ -20,6 +20,7 @@ requires-python = ">=3.9"
 dependencies = [
     "markdownify",
     "python-frontmatter",
+    "requests",
     # mkdocs only for previewing the result
     "mkdocs",
     "mkdocs-material",
@@ -32,3 +33,4 @@ Issues = "https://github.com/tombreit/zammadkb2mkdocs/issues"
 
 [project.scripts]
 zammadkb2mkdocs = "zammadkb2mkdocs.cli:main"
+pgsql2sqlite = "zammadkb2mkdocs.pgsql2sqlite:main"

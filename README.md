@@ -16,7 +16,9 @@ SPDX-License-Identifier: EUPL-1.2
 
 ## Requirements
 
-- Zammad database must be available as a SQLite3 database file
+- `python3`
+- `sqlite3`
+- Zammad database must be available as a SQLite3 database file. See [Database](#database).
 
 ## Usage
 
@@ -52,3 +54,26 @@ mkdocs serve
 - Currently only used/tested with a Zammad Knowledge Base in EN and DE.
 - If the given `zammad-fqdn` is not reachable image src attributes will not be fixed and no images will be downloaded.
 - To start from scratch: delete the automatically populated `./dist` directory.
+
+## Database
+
+### Create PostgreSQL dump
+
+```bash
+@<your-zammad-host>:~$ pg_dump \
+    --port <your-zammad-port:5432> \
+    --username <your-zammad-db-username:zammad> \
+    --disable-dollar-quoting --no-security-labels \
+    --no-subscriptions --no-table-access-method \
+    --no-owner --no-privileges --no-comments \
+    --attribute-inserts \
+    zammad > path/to/dump.sql
+```
+
+### PostgreSQL dump to SQLite3
+
+This package includes a rudimentary conversion script:
+
+```bash
+pgsql2sqlite path/to/dump.sql
+```
