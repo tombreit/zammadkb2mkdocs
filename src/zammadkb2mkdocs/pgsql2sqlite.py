@@ -4,6 +4,7 @@
 
 import sys
 import re
+import argparse
 import tempfile
 import subprocess
 import itertools
@@ -129,11 +130,18 @@ def main():
         print("Error: sqlite3 command not found. Please install it and try again.")
         sys.exit(1)
 
-    if len(sys.argv) != 2:
-        print(f"Usage: {sys.argv[0]} <pg_dump_file>")
-        sys.exit(1)
+    parser = argparse.ArgumentParser(
+        description="Convert Zammad PostgreSQL dump to SQLite database"
+    )
 
-    config = Config()
+    parser.add_argument(
+        "pg_dump_file",
+        type=Path,
+        help="SQLite database path",
+    )
+    args = parser.parse_args()
+
+    config = Config(db_path=args.pg_dump_file)
     converter = PostgresToSQLite(config)
     try:
         print("Step 1: Apply PostgreSQL to SQLite conversion")

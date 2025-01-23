@@ -9,8 +9,8 @@ from dataclasses import dataclass
 @dataclass
 class Config:
     # Given via CLI
-    db_path: Path
-    zammad_fqdn: str
+    db_path: Path | None = None
+    zammad_fqdn: str | None = None
 
     # Default directories
     dist_dir: Path = Path("dist")
